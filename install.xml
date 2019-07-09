@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>SubcategoryImage by akmjoe</name>
+	<version>1.0.0</version>
+	<author>akmjoe</author>
+	<code>subcategory_image</code>
+	<file path="catalog/view/theme/*/template/product/category.twig">
+
+		<operation>
+			<search><![CDATA[if categories|length <= 5]]></search>
+			<add position="replace"><![CDATA[if categories|length <= 5 and not category_image_flag ]]></add>
+		</operation>
+
+
+		<operation>
+			<search><![CDATA[<li><a href="{{ category.href }}">{{ category.name }}</a></li>]]></search>
+			<add position="replace"><![CDATA[
+			<li class="category-icon">
+           <a href="{{ category.href }}">
+           {% if category.thumb %}
+               <img src="{{ category.thumb }}" alt="{{ category.name }}" title="{{ category.name }}" class="img-thumbnail" />
+               <br>
+           {% endif %}
+           {{ category.name }}
+           </a>
+         </li>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search><![CDATA[<li><a href="{{ child.href }}">{{ child.name }}</a></li>]]></search>
+			<add position="replace"><![CDATA[
+			<li class="category-icon">
+				<a href="{{ child.href }}">
+	           {% if child.thumb %}
+	               <img src="{{ child.thumb }}" alt="{{ child.name }}" title="{{ child.name }}" class="img-thumbnail" />
+	               <br>
+	           {% endif %}
+	           {{ child.name }}
+           </a>
+         </li>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search><![CDATA[{% for category in categories|batch((categories|length / 4)|round(1, 'ceil')) %}]]></search>
+			<add position="replace"><![CDATA[{% for category in categories|batch((categories|length / column_count)|round(1, 'ceil')) %}]]></add>
+		</operation>
+	</file>
+
+    <file path="catalog/controller/product/category.php">
+        <operation>
+			<search><![CDATA[public function index]]></search>
+			<add position="after"><![CDATA[     $this->document->addStyle('catalog/view/theme/default/stylesheet/subcategory_image.css');]]></add>
+		</operation>
+    </file>
+</modification>

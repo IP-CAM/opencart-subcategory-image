@@ -1,0 +1,5 @@
+/* Format category icons in list view */
+ul .category-icon {
+    list-style-type: none;
+    display: block;
+}
