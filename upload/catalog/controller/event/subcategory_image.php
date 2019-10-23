@@ -48,6 +48,7 @@ class ControllerEventSubcategoryImage extends Controller {
                         $thumb = $this->model_tool_image->resize($this->model_setting_setting->getSettingValue('module_subcategory_image_no_image'), $width, $height);
                 }
                 $data['categories'][] = array(
+						'category_id' => $result['category_id'],
                         'name' => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
                         'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url),
                         'thumb' => $thumb
