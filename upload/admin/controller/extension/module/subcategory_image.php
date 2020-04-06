@@ -115,7 +115,7 @@ class ControllerExtensionModuleSubcategoryImage extends Controller {
         
         public function install() {
             $this->load->model('setting/event');
-            $this->model_setting_event->addEvent('subcategory_image','catalog/view/product/category/before','event/subcategory_image/after_index');
+            $this->model_setting_event->addEvent('subcategory_image','catalog/view/product/category/before','extension/event/subcategory_image/after_index');
             
         }
         

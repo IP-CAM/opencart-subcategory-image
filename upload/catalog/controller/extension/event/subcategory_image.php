@@ -3,7 +3,7 @@
 /* 
  * 
  */
-class ControllerEventSubcategoryImage extends Controller {
+class controllerExtensionEventSubcategoryImage extends Controller {
     public function after_index(&$route, &$data = array(), &$output = '') {
         $this->load->model('catalog/category');
         $this->load->model('setting/setting');
