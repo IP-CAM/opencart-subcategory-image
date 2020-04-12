@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <modification>
-	<name>SubcategoryImage by akmjoe</name>
+	<name>Subcategory Image</name>
 	<version>1.0.0</version>
-	<author>akmjoe</author>
 	<code>subcategory_image</code>
+    <author>Joe Rothrock</author>
+    <link>https://github.com/akmjoe</link>
+
 	<file path="catalog/view/theme/*/template/product/category.twig">
 
 		<operation>
